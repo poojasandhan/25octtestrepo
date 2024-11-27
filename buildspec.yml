@@ -1,0 +1,43 @@
+version: 0.2
+
+env:
+  variables:
+    PROJECT_NAME: "MyWebsite"
+    S3_BUCKET_NAME: "my-website-bucket"  # Replace with your S3 bucket name
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+    commands:
+      # Install dependencies (if any, for Node.js or other tools)
+      echo "Installing dependencies"
+      npm install
+
+  pre_build:
+    commands:
+      # Any commands to prepare for the build (e.g., linting, testing)
+      echo "Running pre-build tasks"
+      npm run lint
+      npm run test
+
+  build:
+    commands:
+      # Build the application, e.g., compiling TypeScript or minifying assets
+      echo "Building the application"
+      npm run build  # Modify this line according to your build step, e.g., `npm run build`
+
+  post_build:
+    commands:
+      # Commands that run after the build (e.g., uploading artifacts to S3)
+      echo "Uploading files to S3 bucket"
+      aws s3 cp ./build/ s3://$S3_BUCKET_NAME/ --recursive
+
+artifacts:
+  files:
+    - '**/*'  # Include all files for the build artifact
+  base-directory: build  # Specify the directory where build artifacts are located
+
+cache:
+  paths:
+    - 'node_modules/**/*'  # Cache dependencies to speed up future builds
