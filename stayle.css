@@ -1,0 +1,104 @@
+/* General reset and box-sizing */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Body Styling */
+body {
+    background: linear-gradient(45deg, #f06, #a2c2e0);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Container Styling */
+.container {
+    text-align: center;
+    max-width: 800px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Styling */
+h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Paragraph Styling */
+p {
+    font-size: 1.2em;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInText 2s ease-in-out 1s forwards;
+}
+
+/* Button Styling */
+.btn {
+    padding: 15px 30px;
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Hover Effects */
+.btn:hover {
+    background-color: #ff4500;
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    transform: translateY(3px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Scroll Indicator */
+.scroll-indicator {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: #fff;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    50%
