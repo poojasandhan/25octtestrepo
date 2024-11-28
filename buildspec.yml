@@ -27,8 +27,7 @@ phases:
 
   build:
     commands:
-      -echo "building project...(In this case,no build is needed--testing--)"
-      
+      echo "building project...(In this case, no build is needed--testing--)"
 
   post_build:
     commands:
@@ -44,5 +43,6 @@ artifacts:
 cache:
   paths:
     - 'node_modules/**/*'  # Cache dependencies to speed up future builds
+
 
 
