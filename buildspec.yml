@@ -13,6 +13,8 @@ phases:
       # Install dependencies (if any, for Node.js or other tools)
       echo "Installing dependencies"
       npm install
+      echo "Installing AWS CLI"
+      pip install awscli  # Ensure AWS CLI is installed
 
   pre_build:
     commands:
@@ -25,7 +27,8 @@ phases:
     commands:
       # Build the application, e.g., compiling TypeScript or minifying assets
       echo "Building the application"
-      
+      npm run build  # Assuming you have a build command in package.json
+
   post_build:
     commands:
       # Commands that run after the build (e.g., uploading artifacts to S3)
