@@ -25,8 +25,7 @@ phases:
     commands:
       # Build the application, e.g., compiling TypeScript or minifying assets
       echo "Building the application"
-      npm run build  # Modify this line according to your build step, e.g., `npm run build`
-
+      
   post_build:
     commands:
       # Commands that run after the build (e.g., uploading artifacts to S3)
