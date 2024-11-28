@@ -10,28 +10,27 @@ phases:
     runtime-versions:
       nodejs: 16
     commands:
-      # Install dependencies (if any, for Node.js or other tools)
       echo "Installing dependencies"
       npm install
+      echo "Installed dependencies"
+      npm list  # List installed npm packages to debug potential issues
       echo "Installing AWS CLI"
-      pip install awscli  # Ensure AWS CLI is installed
+      pip install awscli
+      echo "AWS CLI installed"
 
   pre_build:
     commands:
-      # Any commands to prepare for the build (e.g., linting, testing)
       echo "Running pre-build tasks"
       npm run lint
       npm run test
 
   build:
     commands:
-      # Build the application, e.g., compiling TypeScript or minifying assets
       echo "Building the application"
-      npm run build  # Assuming you have a build command in package.json
+      npm run build  # Make sure 'build' command exists in package.json
 
   post_build:
     commands:
-      # Commands that run after the build (e.g., uploading artifacts to S3)
       echo "Uploading files to S3 bucket"
       aws s3 cp ./build/ s3://$S3_BUCKET_NAME/ --recursive
 
@@ -43,3 +42,4 @@ artifacts:
 cache:
   paths:
     - 'node_modules/**/*'  # Cache dependencies to speed up future builds
+
