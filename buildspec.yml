@@ -17,6 +17,7 @@ phases:
       echo "Installing AWS CLI"
       pip install awscli
       echo "AWS CLI installed"
+      aws --version  # Ensure AWS CLI is installed
 
   pre_build:
     commands:
@@ -27,11 +28,14 @@ phases:
   build:
     commands:
       echo "Building the application"
-      
+      npm run build  # Ensure 'build' command exists in package.json
+      echo "Build completed"
+      ls -al ./build/  # List the files in the build directory to verify
 
   post_build:
     commands:
       echo "Uploading files to S3 bucket"
+      ls -al ./build/  # Confirm the build folder contents before upload
       aws s3 cp ./build/ s3://$S3_BUCKET_NAME/ --recursive
 
 artifacts:
@@ -42,4 +46,5 @@ artifacts:
 cache:
   paths:
     - 'node_modules/**/*'  # Cache dependencies to speed up future builds
+
 
