@@ -21,28 +21,25 @@ phases:
 
   pre_build:
     commands:
-      echo "Running pre-build tasks"
+      -echo "Running pre-build tasks"
       npm run lint
       npm run test
 
   build:
     commands:
-      echo "building project...(In this case, no build is needed--testing--)"
+      -echo "building project...(In this case, no build is needed--testing--)"
 
   post_build:
     commands:
-      echo "Uploading files to S3 bucket"
-      ls -al ./build/  # Confirm the build folder contents before upload
-      aws s3 cp ./build/ s3://elasticbeanstalk-us-east-2-615299731082/ --recursive
+      -echo "Uploading files to S3 bucket"
+      
 
 artifacts:
   files:
     - '**/*'  # Include all files for the build artifact
   base-directory: build  # Specify the directory where build artifacts are located
 
-cache:
-  paths:
-    - 'node_modules/**/*'  # Cache dependencies to speed up future builds
+
 
 
 
