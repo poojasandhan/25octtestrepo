@@ -13,7 +13,7 @@ phases:
       echo "Installing dependencies"
       npm install
       echo "Installed dependencies"
-      npm list  # List installed npm packages to debug potential issues
+      
       echo "Installing AWS CLI"
       pip install awscli
       echo "AWS CLI installed"
