@@ -3,7 +3,7 @@ version: 0.2
 env:
   variables:
     PROJECT_NAME: "MyWebsite"
-    S3_BUCKET_NAME: "my-website-bucket"  # Replace with your S3 bucket name
+    S3_BUCKET_NAME: "elasticbeanstalk-us-east-2-615299731082"
 
 phases:
   install:
