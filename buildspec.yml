@@ -18,12 +18,10 @@ phases:
       pip install awscli
       echo "AWS CLI installed"
       aws --version  # Ensure AWS CLI is installed
+pre_build:
+  commands:
+    - echo "Running pre-build tasks"; npm run lint; npm run test
 
-  pre_build:
-    commands:
-      -echo "Running pre-build tasks"
-      npm run lint
-      npm run test
 
   build:
     commands:
